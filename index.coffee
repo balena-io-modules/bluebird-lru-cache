@@ -42,6 +42,19 @@ module.exports = class BluebirdLRU extends LRUCache
 
 		super
 
-		if !options.noreject
+
+		if options.fetchFn
+			fetchFn = Promise.method(options.fetchFn)
+			catchFn = ({key}) =>
+				fetchFn(key)
+				.tap (value) =>
+					@set(key, value)
+			@get = ->
+				rejectedGet.apply(@, arguments)
+				.catch(NoSuchKeyError, catchFn)
+			@peek = ->
+				rejectedPeek.apply(@, arguments)
+				.catch(NoSuchKeyError, catchFn)
+		else if !options.noreject
 			@get = rejectedGet
 			@peek = rejectedPeek

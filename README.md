@@ -44,6 +44,7 @@ Options are passed directly to LRU Cache at instantiation; the below documentati
 - `dispose`: Function called on items when they immediately before they are dropped from the cache. Called with parameters (`key`, `value`)
 - `stale`: Allow the cache to return the stale (expired via `MaxAge`) value before deleting it
 - `noreject`: _bluebird-lru-cache only_; Boolean; instructs bluebird-lru-cache not to generate rejected promises and instead resolve to undefined for missing or expired output from `get` and `peek`;  defaults to `false`
+- `fetchFn`: _bluebird-lru-cache only_; Function; instructs bluebird-lru-cache to use this function to fetch and store data using this function if it does not already exist in the cache, instead of returning a rejection or `undefined`
 
 
 ### API

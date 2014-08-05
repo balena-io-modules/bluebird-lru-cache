@@ -71,3 +71,21 @@ describe 'Rejection divergence', ->
 
 	it 'peek', ->
 		rejectionApi('peek', key)
+
+
+describe 'Automatic fetching', ->
+	bcache = BluebirdLRU(
+		fetchFn: (key) ->
+			return key + 'bar'
+	)
+
+	autoFetchApi = (method, args...) ->
+		result = bcache[method](args...)
+		expect(result).to.eventually.equal(key + 'bar')
+
+	it 'get', ->
+		autoFetchApi('get', key)
+
+	it 'peek', ->
+		bcache.reset().then ->
+			autoFetchApi('peek', key)
