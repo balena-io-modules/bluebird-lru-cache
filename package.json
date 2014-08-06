@@ -1,11 +1,12 @@
 {
   "name": "bluebird-lru-cache",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/coffee-script/bin/coffee -c . && node node_modules/mocha/bin/mocha"
   },
+  "repository": "https://github.com/resin-io/bluebird-lru-cache.git",
   "author": "",
   "license": "",
   "dependencies": {
