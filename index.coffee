@@ -1,5 +1,6 @@
 LRUCache = require 'lru-cache'
 Promise = require 'bluebird'
+TypedError = require 'typed-error'
 
 module.exports = class BluebirdLRU extends LRUCache
 	# Update these methods of LRUCache to return a promise.
@@ -18,7 +19,7 @@ module.exports = class BluebirdLRU extends LRUCache
 
 	# If the user opts in to rejected promises on failed gets/sets then we can return this error
 	# Allowing use of `.catch BluebirdLRU.NoSuchKeyError, -> ...`
-	BluebirdLRU.NoSuchKeyError = class NoSuchKeyError extends Error
+	BluebirdLRU.NoSuchKeyError = class NoSuchKeyError extends TypedError
 		constructor: (@key) ->
 			super
 
