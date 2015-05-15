@@ -11,7 +11,7 @@
   "license": "",
   "dependencies": {
     "bluebird": "^2.7.1",
-    "lru-cache": "~2.5.0",
+    "lru-cache": "^2.6.3",
     "typed-error": "~0.1.0"
   },
   "devDependencies": {
