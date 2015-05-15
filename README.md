@@ -41,7 +41,7 @@ Options are passed directly to LRU Cache at instantiation; the below documentati
 - `max`: The maximum size of the cache, checked by applying the length function to all values in the cache
 - `maxAge`: Maximum age in ms; lazily enforced; expired keys will return `undefined`
 - `length`: Function called to calculate the length of stored items (e.g. `function(n) { return n.length; }`); defaults to `function(n) { return 1; }`
-- `dispose`: Function called on items when they immediately before they are dropped from the cache. Called with parameters (`key`, `value`)
+- `dispose`: Function called on items immediately before they are dropped from the cache. Called with parameters (`key`, `value`)
 - `stale`: Allow the cache to return the stale (expired via `MaxAge`) value before deleting it
 - `noreject`: _bluebird-lru-cache only_; Boolean; instructs bluebird-lru-cache not to generate rejected promises and instead resolve to undefined for missing or expired output from `get` and `peek`;  defaults to `false`
 - `fetchFn`: _bluebird-lru-cache only_; Function; instructs bluebird-lru-cache to use this function to fetch and store data using this function if it does not already exist in the cache, instead of returning a rejection or `undefined`
@@ -51,9 +51,10 @@ Options are passed directly to LRU Cache at instantiation; the below documentati
 
 Any of the arguments for these functions can be a promise, which will be resolved before executing the method.
 
-**`set(key, value)`**
+**`set(key, value, max)`**
 
-Set the given `key` in the cache to `value`; updates the "recently-used"-ness of the key; returns a promise that resolves to a boolean indicating whether the value was stored or not (in the case of the value being too large it will not be stored).
+Set the given `key` in the cache to `value`; updates the "recently-used"-ness of the key; returns a promise that resolves to a boolean indicating whether the value was stored or not (in the case of the value being too large it will not be stored).  
+`max` is optional and overrides the cache `max` option if provided.
 
 ```
 var promisedKey = Promise.resolved().delay(500).then(function () {
@@ -122,6 +123,14 @@ cache.values().then(function (values) {
 	console.log(values);
 });
 ```
+
+* `length()`
+
+Return total length of objects in cache taking into account `length` options function.
+
+* `itemCount()`
+
+Return total quantity of objects currently in cache. Note, that `stale` (see options) items are returned as part of this item count.
 
 ### Rejection handling
 
