@@ -10,7 +10,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "bluebird": "^2.7.1",
+    "bluebird": "^3.0.6",
     "lru-cache": "^2.6.3",
     "typed-error": "~0.1.0"
   },
