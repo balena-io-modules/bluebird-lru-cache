@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "test": "node node_modules/coffee-script/bin/coffee -c . && node node_modules/mocha/bin/mocha"
   },
