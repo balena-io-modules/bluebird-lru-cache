@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/coffee-script/bin/coffee -c . && node node_modules/mocha/bin/mocha"
+    "test": "npm run prepare && mocha --require coffeescript/register test/**/*.coffee",
+    "prepare": "coffee -c index.coffee"
   },
   "repository": "https://github.com/resin-io/bluebird-lru-cache.git",
   "author": "",
@@ -13,12 +14,12 @@
   "dependencies": {
     "bluebird": "^3.0.6",
     "lru-cache": "^3.2.0",
-    "typed-error": "~0.1.0"
+    "typed-error": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "chai-as-promised": "^5.0.0",
-    "coffee-script": "~1.10.0",
-    "mocha": "^2.2.5"
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "coffeescript": "^1.12.7",
+    "mocha": "^5.2.0"
   }
 }
