@@ -1,7 +1,7 @@
 {
   "name": "bluebird-lru-cache",
-  "license": "Apache-2.0",
-  "version": "1.0.0",
+  "license": "",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,6 @@
   },
   "repository": "https://github.com/resin-io/bluebird-lru-cache.git",
   "author": "",
-  "license": "",
   "dependencies": {
     "bluebird": "^3.0.6",
     "lru-cache": "^3.2.0",
